@@ -1,1 +1,1 @@
-alert('for testing');
+document.write("Just testing");
