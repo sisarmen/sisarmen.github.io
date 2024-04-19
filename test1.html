@@ -1,0 +1,349 @@
+<html>
+<head>
+<title> Տեստ</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+
+ a {
+ text-shadow: 0px 1px 1px #fff;
+ background-image: -webkit-gradient(linear, left top, left bottom,  from(#ccc), to(#999));
+ background-color: #ccc;
+ border-bottom: 1px solid #666;
+ color: #222;
+ display: block;
+ font-size: 20px;
+ font-weight: bold;
+ padding: 10px 0;
+ text-align: center;
+ text-decoration: none;
+}
+
+ul {
+ list-style: none;
+ margin: 10px;
+ padding: 0;
+}
+li{
+ background-color: #FFffFF;
+ border: 1px solid #999999;
+ color: #222222;
+ display: block;
+ font-size: 17px;
+ font-weight: bold;
+ margin-bottom: -1px;
+ padding: 12px 10px;
+ text-decoration: none;
+ }
+ 
+ #answers{display:none;} 
+ #score{display:none;
+ font-size:72;
+ }
+ #miavor{display:none;}
+ #miavorner{display:none;}   
+ #smilik{display:none;} 
+ 
+ #leftButton {
+border:1px solid;
+ height: 40px;
+ text-align:center; 
+ display:none;
+
+}
+
+ #question{text-align: left;}
+ 
+ .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {width: 250px;}
+ </style>
+</head>
+
+<body>
+<div>
+<a href="#" id="start" onclick="f1()">Տեստը սկսելու համար սեղմեք այստեղ</a>
+
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+	<div class="col-sm-4">
+<label id='miavorner'>Միավորներ  </label>
+<label id='score'>0  </label><label id='miavor'>17  </label>
+	</div>
+	
+	<div class="col-sm-8">
+<img src="images/neytral.png" id="smilik">
+
+	</div>
+	<!--
+<div class="col-sm-6" id="leftButton" onclick="f()"><br><br><br>Հաջորդը</div>
+</div>-->
+
+  <div class="row" >
+   <div class="col-sm-6" id="question"><img id="harc" src="images/bg_1.jpg" ></div>
+    <div class="col-sm-2">
+<ul id="answers">
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l1'> aa</label> 
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l2'> bb</label>
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l3'> cc</label> 
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l4'> dd</label> 
+	</li>
+
+
+</ul>
+</div>
+
+
+
+  </div>
+
+</div>
+
+
+
+<div class="col-sm-6" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
+</div>
+
+
+
+
+
+</div>
+<script>
+
+
+harcashar=new Array();
+
+harcashar[0]=new Array("11.JPG","64000405","64405","6400405","640405",2);
+harcashar[1]=new Array("12.JPG","30","496","7680","464",4);
+harcashar[2]=new Array("13.JPG","5","4","45","457",3);
+harcashar[3]=new Array("14.JPG","8","6","5","7",2);
+harcashar[4]=new Array("15.JPG","3","2","8","1",4); 
+harcashar[5]=new Array("16.JPG","340","220","3040","190",1);
+harcashar[6]=new Array("17.JPG","16 սմ քառակուսի","144 սմ քառակուսի","81 սմ քառակուսի","36 սմ քառակուսի",2);
+harcashar[7]=new Array("18.JPG","1)","2)","3)","4)",2);
+harcashar[8]=new Array("19.JPG","հանելին","նվազելին","բաժանելին","գումարելին",1);
+harcashar[9]=new Array("110.JPG","18 կգ","24 կգ","30 կգ","12 կգ",4);
+harcashar[10]=new Array("111.JPG","75","65","90","60",4);
+harcashar[11]=new Array("112.JPG","9900","9901","9990","9000",2);
+harcashar[12]=new Array("113.JPG","35*(145-125):5-35*4=0","35*(145-125:5)-35*4=0","35*(145-125:5-35*4)=0","35*145-(125:5-35)*4=0",1);
+harcashar[13]=new Array("114.JPG","600","500","750","100",2);
+harcashar[14]=new Array("115.JPG","33","13","23","20",3);
+harcashar[15]=new Array("116.JPG","33","32","8","16",2);
+harcashar[16]=new Array("117.JPG","700","800","2100","2800",3);
+
+
+var currentQuestion=-1;
+var miavor=0;
+
+
+var pic=document.getElementById("harc");
+var picName="";
+var smile=document.getElementById("smilik");
+
+var radioButtons=document.getElementsByName("disc");
+//var questionBox=document.getElementById("harc");
+var lbl1=document.getElementById("l1");
+var lbl2=document.getElementById("l2");
+var lbl3=document.getElementById("l3");
+var lbl4=document.getElementById("l4");
+
+
+var lblName="";
+
+
+	function f1(){
+var a=document.getElementById("miavorner");
+var b=document.getElementById("score");
+var c=document.getElementById("smilik");
+	var x = document.getElementById("start");
+var y=document.getElementById("leftButton");
+var z=document.getElementById("answers");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+a.style.display = "block";
+b.style.display = "block";
+c.style.display = "block";
+
+y.style.display = "block";
+z.style.display = "block";
+
+pic.src="images/77.png";
+ 
+f();
+	}
+
+
+	function f(){
+smile.src="images/neytral.png";
+
+radioButtons[0].checked=false;
+radioButtons[1].checked=false;
+radioButtons[2].checked=false;
+radioButtons[3].checked=false;
+//enable buttons
+var radios = document.getElementsByName('disc');
+
+for (var i = 0, r=radios, l=r.length; i < l;  i++){
+    radios[i].disabled = false;
+}
+
+
+//remove colors
+lbl1.style.backgroundColor = "#ffffff";
+lbl2.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl4.style.backgroundColor = "#ffffff";
+
+//lbl.style.backgroundColor = "#ffffff";
+currentQuestion++;
+ 
+if (currentQuestion==(harcashar.length))
+{
+var a=document.getElementById("miavorner");
+var b=document.getElementById("score");
+var c=document.getElementById("smilik");
+	
+var y=document.getElementById("leftButton");
+var z=document.getElementById("answers");
+a.style.display = "none";
+b.style.display = "none";
+c.style.display = "none";
+
+y.style.display = "none";
+z.style.display = "none";
+
+pic.src="images/bg_1.jpg";
+ 
+//remove colors
+lbl1.style.backgroundColor = "#ffffff";
+lbl2.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl4.style.backgroundColor = "#ffffff";
+
+document.getElementById("score").innerHTML=0;
+
+
+var x = document.getElementById("start");
+var y=document.getElementById("leftButton");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  
+
+currentQuestion=-1;
+
+x.style.display = "block";
+
+ picName="images/bg_1.jpg";
+ pic.src = picName;
+ // A simple toast in pure JavaScript
+
+
+ toastElement = document.createElement("div");
+msg= "Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր";
+miavor=0;
+toastElement.textContent = msg;
+document.body.append(toastElement);
+setTimeout(() => toastElement.remove(), 12000);
+return;
+}
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+picName="images/"+harcashar[currentQuestion][0];
+ pic.src = picName;
+
+ lbl1.innerHTML=harcashar[currentQuestion][1];
+lbl2.innerHTML=harcashar[currentQuestion][2];
+lbl3.innerHTML=harcashar[currentQuestion][3];
+lbl4.innerHTML=harcashar[currentQuestion][4];
+
+
+	}
+function checkAnswer(){
+
+var choice=0;
+if (radioButtons[0].checked==true) choice=1;
+if (radioButtons[1].checked==true)choice=2;
+if (radioButtons[2].checked==true) choice=3;
+if (radioButtons[3].checked==true) choice=4;
+
+switch(choice)
+{
+case 1 : lblName="l1"; break;
+case 2 : lblName="l2"; break;
+case 3 : lblName="l3"; break;
+case 4 : lblName="l4";
+}
+
+
+
+lbl=document.getElementById(lblName);
+if(choice==harcashar[currentQuestion][5]){
+lbl.style.backgroundColor = "#00ff00";
+miavor++;
+
+if(currentQuestion==15){miavor++;}
+if(currentQuestion==16){miavor++;miavor++;}
+smile.src='images/yeah.png';
+}
+else{
+lbl.style.backgroundColor = "#ff0000";
+smile.src='images/nonono.png';
+
+}
+
+//!!!!!!!!!!!!!!!!!!!!
+num=harcashar[currentQuestion][5];
+num_str=num.toString();
+lblName = "l" + num_str;
+lbl=document.getElementById(lblName);
+lbl.style.backgroundColor = "#00ff00";
+//!!!!!!!!!!!!!!!!!!!!!
+document.getElementById("score").innerHTML=miavor;
+var radios = document.getElementsByName('disc');
+for (var i = 0, r=radios, l=r.length; i < l;  i++){
+    r[i].disabled = true;
+}
+}
+
+</script>
+</body>
+</html>
