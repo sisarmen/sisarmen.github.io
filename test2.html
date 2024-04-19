@@ -1,0 +1,351 @@
+<html>
+<head>
+<title> Տեստ</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+
+ a {
+ text-shadow: 0px 1px 1px #fff;
+ background-image: -webkit-gradient(linear, left top, left bottom,  from(#ccc), to(#999));
+ background-color: #ccc;
+ border-bottom: 1px solid #666;
+ color: #222;
+ display: block;
+ font-size: 20px;
+ font-weight: bold;
+ padding: 10px 0;
+ text-align: center;
+ text-decoration: none;
+}
+
+ul {
+ list-style: none;
+ margin: 10px;
+ padding: 0;
+}
+li{
+ background-color: #FFffFF;
+ border: 1px solid #999999;
+ color: #222222;
+ display: block;
+ font-size: 17px;
+ font-weight: bold;
+ margin-bottom: -1px;
+ padding: 12px 10px;
+ text-decoration: none;
+ }
+ 
+ #answers{display:none;} 
+ #score{display:none;
+ font-size:72;
+ }
+ #miavor{display:none;}
+ #miavorner{display:none;}   
+ #smilik{display:none;} 
+ 
+ #leftButton {
+border:1px solid;
+ height: 40px;
+ text-align:center; 
+ display:none;
+
+}
+
+ #question{text-align: left;}
+ 
+ .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {width: 250px;}
+ </style>
+</head>
+
+<body>
+<div>
+<a href="#" id="start" onclick="f1()">Տեստը սկսելու համար սեղմեք այստեղ</a>
+
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+	<div class="col-sm-4">
+<label id='miavorner'>Միավորներ  </label>
+<label id='score'>0  </label><label id='miavor'>17  </label>
+	</div>
+	
+	<div class="col-sm-8">
+<img src="images/neytral.png" id="smilik">
+
+	</div>
+	<!--
+<div class="col-sm-6" id="leftButton" onclick="f()"><br><br><br>Հաջորդը</div>
+</div>-->
+
+  <div class="row" >
+   <div class="col-sm-6" id="question"><img id="harc" src="images/bg_1.jpg" ></div>
+    <div class="col-sm-2">
+<ul id="answers">
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l1'> aa</label> 
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l2'> bb</label>
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l3'> cc</label> 
+	</li>
+
+	<li>
+<input type="radio" name="disc" onclick="checkAnswer()">
+<label id='l4'> dd</label> 
+	</li>
+
+
+</ul>
+</div>
+
+
+
+  </div>
+
+</div>
+
+
+
+<div class="col-sm-6" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
+</div>
+
+
+
+
+
+</div>
+<script>
+
+//let newWin = window.open("about:blank", "hello", "width=200,height=200");
+
+//newWin.document.write("Hello, world!");
+harcashar=new Array();
+
+harcashar[0]=new Array("21.JPG","220036","22036","2236","2200036",2);
+harcashar[1]=new Array("22.JPG","20","315","4500","285",3);
+harcashar[2]=new Array("23.JPG","54","5487","548","75",2);
+harcashar[3]=new Array("24.JPG","6248, 12345, 9999, 74892, 406, 60","67, 312, 1008, 3416, 5326, 5370","98751, 68979, 9876, 476, 42, 6","6, 18, 24, 30, 40, 54, 45, 77",2);
+harcashar[4]=new Array("25.JPG","1","2","0","3",4);
+harcashar[5]=new Array("26.JPG","420 ր","60 ր","260 ր","270 ր",3);
+harcashar[6]=new Array("27.JPG","24 սմ","12 սմ","96 սմ","48 սմ",4);
+harcashar[7]=new Array("28.JPG","1)","2)","3)","4)",3);
+harcashar[8]=new Array("29.JPG","440","220","36300","3",2);
+harcashar[9]=new Array("210.JPG","200 կմ","192 կմ","64 կմ","128 կմ",2);
+harcashar[10]=new Array("211.JPG","15","5","10","60",1);
+harcashar[11]=new Array("212.JPG","90","180","99","100",2);
+harcashar[12]=new Array("213.JPG","**=99","**=89","**=10","**=88",1);
+harcashar[13]=new Array("214.JPG","640","6000","750","64",2);
+harcashar[14]=new Array("215.JPG","1100","1134","934","835",2);
+harcashar[15]=new Array("216.JPG","300","350","100","50",2);
+harcashar[16]=new Array("217.JPG","330","400","360","480",3);
+
+
+var currentQuestion=-1;
+var miavor=0;
+
+
+var pic=document.getElementById("harc");
+var picName="";
+var smile=document.getElementById("smilik");
+
+var radioButtons=document.getElementsByName("disc");
+//var questionBox=document.getElementById("harc");
+var lbl1=document.getElementById("l1");
+var lbl2=document.getElementById("l2");
+var lbl3=document.getElementById("l3");
+var lbl4=document.getElementById("l4");
+
+
+var lblName="";
+
+
+	function f1(){
+var a=document.getElementById("miavorner");
+var b=document.getElementById("score");
+var c=document.getElementById("smilik");
+	var x = document.getElementById("start");
+var y=document.getElementById("leftButton");
+var z=document.getElementById("answers");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+a.style.display = "block";
+b.style.display = "block";
+c.style.display = "block";
+
+y.style.display = "block";
+z.style.display = "block";
+
+pic.src="images/77.png";
+ 
+f();
+	}
+
+
+	function f(){
+smile.src="images/neytral.png";
+
+radioButtons[0].checked=false;
+radioButtons[1].checked=false;
+radioButtons[2].checked=false;
+radioButtons[3].checked=false;
+//enable buttons
+var radios = document.getElementsByName('disc');
+
+for (var i = 0, r=radios, l=r.length; i < l;  i++){
+    radios[i].disabled = false;
+}
+
+
+//remove colors
+lbl1.style.backgroundColor = "#ffffff";
+lbl2.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl4.style.backgroundColor = "#ffffff";
+
+//lbl.style.backgroundColor = "#ffffff";
+currentQuestion++;
+ 
+if (currentQuestion==(harcashar.length))
+{
+var a=document.getElementById("miavorner");
+var b=document.getElementById("score");
+var c=document.getElementById("smilik");
+	
+var y=document.getElementById("leftButton");
+var z=document.getElementById("answers");
+a.style.display = "none";
+b.style.display = "none";
+c.style.display = "none";
+
+y.style.display = "none";
+z.style.display = "none";
+
+pic.src="images/bg_1.jpg";
+ 
+//remove colors
+lbl1.style.backgroundColor = "#ffffff";
+lbl2.style.backgroundColor = "#ffffff";
+lbl3.style.backgroundColor = "#ffffff";
+lbl4.style.backgroundColor = "#ffffff";
+
+document.getElementById("score").innerHTML=0;
+
+
+var x = document.getElementById("start");
+var y=document.getElementById("leftButton");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  
+
+currentQuestion=-1;
+
+x.style.display = "block";
+
+ picName="images/bg_1.jpg";
+ pic.src = picName;
+ // A simple toast in pure JavaScript
+
+
+ toastElement = document.createElement("div");
+msg= "Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր";
+miavor=0;
+toastElement.textContent = msg;
+document.body.append(toastElement);
+setTimeout(() => toastElement.remove(), 12000);
+return;
+}
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+picName="images2/"+harcashar[currentQuestion][0];
+ pic.src = picName;
+
+ lbl1.innerHTML=harcashar[currentQuestion][1];
+lbl2.innerHTML=harcashar[currentQuestion][2];
+lbl3.innerHTML=harcashar[currentQuestion][3];
+lbl4.innerHTML=harcashar[currentQuestion][4];
+
+
+	}
+function checkAnswer(){
+
+var choice=0;
+if (radioButtons[0].checked==true) choice=1;
+if (radioButtons[1].checked==true)choice=2;
+if (radioButtons[2].checked==true) choice=3;
+if (radioButtons[3].checked==true) choice=4;
+
+switch(choice)
+{
+case 1 : lblName="l1"; break;
+case 2 : lblName="l2"; break;
+case 3 : lblName="l3"; break;
+case 4 : lblName="l4";
+}
+
+
+
+lbl=document.getElementById(lblName);
+if(choice==harcashar[currentQuestion][5]){
+lbl.style.backgroundColor = "#00ff00";
+miavor++;
+if(currentQuestion==15){miavor++;}
+if(currentQuestion==16){miavor++;miavor++;}
+
+smile.src='images/yeah.png';
+}
+else{
+lbl.style.backgroundColor = "#ff0000";
+smile.src='images/nonono.png';
+
+}
+
+//!!!!!!!!!!!!!!!!!!!!
+num=harcashar[currentQuestion][5];
+num_str=num.toString();
+lblName = "l" + num_str;
+lbl=document.getElementById(lblName);
+lbl.style.backgroundColor = "#00ff00";
+//!!!!!!!!!!!!!!!!!!!!!
+document.getElementById("score").innerHTML=miavor;
+var radios = document.getElementsByName('disc');
+for (var i = 0, r=radios, l=r.length; i < l;  i++){
+    r[i].disabled = true;
+}
+}
+
+</script>
+</body>
+</html>
