@@ -81,23 +81,21 @@ border:1px solid;
 
 <div class="container">
 
-<div class="row">
+<div class="row"><!-- row1 -->
 
 	<div class="col-sm-4">
 <label id='miavorner'>Միավորներ  </label>
 <label id='score' style="color:red">0  </label><label id='miavor'>17  </label>
-	</div>
+	</div><!-- row1 col1-->
 	
 	<div class="col-sm-8">
 <img src="images/neytral.png" id="smilik">
 
-	</div>
-	<!--
-<div class="col-sm-6" id="leftButton" onclick="f()"><br><br><br>Հաջորդը</div>
-</div>-->
+	</div><!-- row1 col2-->
+	</div><!-- row1 end-->
 
-  <div class="row" >
-   <div class="col-sm-6" id="question"><img id="harc" src="images/bg_1.jpg" ></div>
+  <div class="row" ><!-- row2-->
+   <div class="col-sm-6" id="question"><img id="harc" src="images/bg_1.jpg" ></div><!-- row2 col1-->
     <div class="col-sm-2">
 <ul id="answers">
 	<li>
@@ -122,17 +120,17 @@ border:1px solid;
 
 
 </ul>
-</div>
+</div><!-- row2 col2-->
 
 
 
-  </div>
-
-</div>
+  </div><!-- row2 end-->
 
 
 
-<div class="col-sm-6" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
+
+<div class="row" >
+<div class="col-sm-12" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
 </div>
 
 
@@ -151,17 +149,17 @@ harcashar[2]=new Array("33.JPG","1)","2)","3)","4)",4);
 harcashar[3]=new Array("34.JPG","1)","2)","3)","4)",3);
 harcashar[4]=new Array("35.JPG","1)","2)","3)","4)",4); 
 harcashar[5]=new Array("36.JPG","1)","2)","3)","4)",3);
-harcashar[6]=new Array("37.JPG","81 սմ քառակուսի","24 սմ քառակուսի","72 սմ քառակուսի","36 սմ քառակուսի",1);
+harcashar[6]=new Array("37.JPG","1)","2)","3)","4)",1);
 harcashar[7]=new Array("38.JPG","1)","2)","3)","4)",2);
 harcashar[8]=new Array("39.JPG","1)","2)","3)","4)",2);
 harcashar[9]=new Array("310.JPG","1)","2)","3)","4)",2);
-harcashar[10]=new Array("311.JPG","15","5","2","7",1);
-harcashar[11]=new Array("312.JPG","900","901","899","1000",1);
-harcashar[12]=new Array("313.JPG","72-9*4","72+9:4","72:9*4","72*9:4",1);
+harcashar[10]=new Array("311.JPG","6","5","9","15",4);
+harcashar[11]=new Array("312.JPG","900","901","890","899",1);
+harcashar[12]=new Array("313.JPG","72 - 9 * 4","72 : 9 * 4","72 : 9 : 4","72 - 9 + 4",1);
 harcashar[13]=new Array("314.JPG","600","500","750","100",2);
-harcashar[14]=new Array("315.JPG","36","48","45","20",2);
-harcashar[15]=new Array("316.JPG","33000","10500","33600","160",3);
-harcashar[16]=new Array("317.JPG","700","1400","490","2800",3);
+harcashar[14]=new Array("315.JPG","6","36","48","12",3);
+harcashar[15]=new Array("316.JPG","33600","32000","28000","16000",1);
+harcashar[16]=new Array("317.JPG","700","800","490","280",3);
 
 
 var currentQuestion=-1;
@@ -279,15 +277,15 @@ x.style.display = "block";
 
 
  toastElement = document.createElement("div");
-msg= "Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր";
+msg= "<h1 style = 'color:blue'>Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր </h1>";
 miavor=0;
-toastElement.textContent = msg;
+toastElement.innerHTML = msg;
 document.body.append(toastElement);
 setTimeout(() => toastElement.remove(), 12000);
 return;
 }
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-picName="images/"+harcashar[currentQuestion][0];
+picName="images3/"+harcashar[currentQuestion][0];
  pic.src = picName;
 
  lbl1.innerHTML=harcashar[currentQuestion][1];

@@ -81,24 +81,22 @@ border:1px solid;
 
 <div class="container">
 
-<div class="row">
+<div class="row"><!-- raw1 -->
 
 	<div class="col-sm-4">
 <label id='miavorner'>Միավորներ  </label>
-<label id='score' style="color:red">0  </label><label id='miavor'>17  </label>
-	</div>
+<label id='score'>0  </label><label id='miavor'>17  </label>
+	</div><!-- raw1 col1-->
 	
 	<div class="col-sm-8">
 <img src="images/neytral.png" id="smilik">
 
-	</div>
-	<!--
-<div class="col-sm-6" id="leftButton" onclick="f()"><br><br><br>Հաջորդը</div>
-</div>-->
+	</div><!-- raw1 col2-->
+</div><!-- raw1 end-->
 
-  <div class="row" >
-   <div class="col-sm-6" id="question"><img id="harc" src="images/bg_1.jpg" ></div>
-    <div class="col-sm-2">
+  <div class="row" ><!-- raw2-->
+   <div class="col-sm-8" id="question"><img id="harc" src="images/bg_1.jpg" ></div><!-- raw2 col1-->
+    <div class="col-sm-4">
 <ul id="answers">
 	<li>
 <input type="radio" name="disc" onclick="checkAnswer()">
@@ -122,41 +120,28 @@ border:1px solid;
 
 
 </ul>
-</div>
-
-
-
-  </div>
-
-</div>
-
-
-
-<div class="col-sm-6" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
-</div>
-
-
-
-
+</div><!-- raw2 col2-->
+</div> <!-- raw2 end-->
+<div class="row">
+<div class="col-sm-12" id="leftButton" onclick="f()"><img src="images/slaq.jpg"></div>
+</div><!-- raw3 end-->
 
 </div>
 <script>
 
-//let newWin = window.open("about:blank", "hello", "width=200,height=200");
 
-//newWin.document.write("Hello, world!");
 harcashar=new Array();
 
-harcashar[0]=new Array("21.JPG","220036","22036","2236","2200036",2);
-harcashar[1]=new Array("22.JPG","20","315","4500","285",3);
-harcashar[2]=new Array("23.JPG","54","5487","548","75",2);
-harcashar[3]=new Array("24.JPG","6248, 12345, 9999, 74892, 406, 60","67, 312, 1008, 3416, 5326, 5370","98751, 68979, 9876, 476, 42, 6","6, 18, 24, 30, 40, 54, 45, 77",2);
-harcashar[4]=new Array("25.JPG","1","2","0","3",4);
-harcashar[5]=new Array("26.JPG","420 ր","60 ր","260 ր","270 ր",3);
-harcashar[6]=new Array("27.JPG","24 սմ","12 սմ","96 սմ","48 սմ",4);
+harcashar[0]=new Array("21.JPG","1)","2)","3)","4)",2);
+harcashar[1]=new Array("22.JPG","1)","2)","3)","4)",3);
+harcashar[2]=new Array("23.JPG","1)","2)","3)","4)",2);
+harcashar[3]=new Array("24.JPG","1)","2)","3)","4)",2);
+harcashar[4]=new Array("25.JPG","1)","2)","3)","4)",4);
+harcashar[5]=new Array("26.JPG","1)","2)","3)","4)",3);
+harcashar[6]=new Array("27.JPG","1)","2)","3)","4)",4);
 harcashar[7]=new Array("28.JPG","1)","2)","3)","4)",3);
-harcashar[8]=new Array("29.JPG","440","220","36300","3",2);
-harcashar[9]=new Array("210.JPG","200 կմ","192 կմ","64 կմ","128 կմ",2);
+harcashar[8]=new Array("29.JPG","1)","2)","3)","4)",2);
+harcashar[9]=new Array("210.JPG","1)","2)","3)","4)",2);
 harcashar[10]=new Array("211.JPG","15","5","10","60",1);
 harcashar[11]=new Array("212.JPG","90","180","99","100",2);
 harcashar[12]=new Array("213.JPG","**=99","**=89","**=10","**=88",1);
@@ -281,9 +266,9 @@ x.style.display = "block";
 
 
  toastElement = document.createElement("div");
-msg= "Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր";
+msg= "<h1 style = 'color:blue'>Շատ ապրես, դու հավաքեցիր " + miavor + " միավոր </h1>";
 miavor=0;
-toastElement.textContent = msg;
+toastElement.innerHTML = msg;
 document.body.append(toastElement);
 setTimeout(() => toastElement.remove(), 12000);
 return;
